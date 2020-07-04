@@ -1,0 +1,366 @@
+$background-color-normalized: #1d2536;
+$text-color: #aebbba;
+$content-background-color: #000000CC;
+$content-background-color-darker: #000000EE;
+$small-viewport-width: 600px;
+
+body {
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial,
+    'Lucida Grande', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: #000000;
+}
+
+a {
+  text-decoration: none;
+  color: #108db8;
+  font-weight: bold;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  color: $text-color;
+  z-index: 1000;
+  min-width: 350px;
+
+  nav {
+    background-color: $content-background-color;
+    width: 100%;
+    display: flex;
+    flex: 1 1 auto;
+    position: relative;
+    user-select: none;
+    z-index: 2000;
+
+    @media (max-width: $small-viewport-width) {
+      position: fixed;
+      background-color: $content-background-color-darker;
+      padding: 5px 0;
+
+      flex-direction: column;
+
+      &.hidden {
+        a {
+          display: none;
+        }
+
+        .hamburger {
+          filter: alpha(0.5);
+        }
+      }
+    }
+
+    @media (min-width: $small-viewport-width) {
+
+      .home-link {
+        display: none;
+      }
+
+      .hamburger {
+        display: none;
+      }
+    }
+
+    .hamburger {
+      width: 40px;
+      height: 25px;
+      background-image: url("/img/hamburger.png");
+      border-radius: 5px;
+      background-size: contain;
+      margin: 10px;
+      transition: filter 0.3s;
+    }
+
+    .float-right {
+      position: absolute;
+      right: 0;
+      top: 10px;
+      height: 100%;
+      width: 120px;
+      display: flex;
+      margin-right: 10px;
+      justify-content: flex-start;
+
+      .flag {
+        flex: 0 0 40px;
+        height: 40px;
+        margin: 0 10px;
+        transition: filter 0.2s;
+        filter: none;
+
+        &:not(.active) {
+          filter: brightness(1) grayscale(0.8);
+        }
+
+        &:hover {
+          filter: brightness(1.4);
+
+          &:not(.active) {
+            filter: brightness(1.4) grayscale(0.8);
+          }
+        }
+      }
+    }
+
+    a {
+      filter: brightness(0.6667);
+      color: #EEEEEE;
+      padding: 1.25rem 0.9rem;
+      display: inline-block;
+      height: calc(50px - 2rem);
+      flex: 0 0 auto;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #BBBBBB;
+      }
+
+      @media (max-width: $small-viewport-width) {
+        padding: 0.5rem 1rem;
+        margin: 0;
+      }
+    }
+  }
+
+  .nav-symbol {
+    background-image: url("/img/symbol-white.png");
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    margin: 0.25rem;
+    display: inline-block;
+    flex: 0 0 auto;
+    padding: 0;
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(1.3);
+    }
+
+    &:active {
+      filter: brightness(0.9);
+    }
+
+    @media (max-width: $small-viewport-width) {
+      display: none;
+    }
+  }
+
+  .center-outer-container {
+    flex: 1 1 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .center-container {
+      height: 100%;
+      width: 60%;
+      min-width: 300px;
+      max-width: 600px;
+
+      flex: 1 1 50%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      .center-container-inner {
+        flex: 0 0 auto;
+        text-align: center;
+        background-color: $content-background-color;
+        padding: 50px 0;
+        border-radius: 0 0 6px 6px;
+
+        @media(max-width: $small-viewport-width) {
+          padding: 100px 0 20px 0;
+        }
+
+        .title-container {
+          user-select: none;
+          display: flex;
+          flex: 1 1 auto;
+          justify-content: center;
+
+          .eris-title-logo {
+            background-image: url("/img/symbol-white.png");
+            background-size: contain;
+            flex: 0 0 120px;
+            height: 120px;
+            filter: brightness(0.73);
+
+            @media (max-width: $small-viewport-width) {
+              flex: 0 0 70px;
+              height: 70px;
+            }
+          }
+
+          .title-text-container {
+            flex: 0 0 auto;
+
+
+            .title {
+              font-family: "Arial Black", Gadget, sans-serif;
+              font-size: 80px;
+              font-weight: 900;
+              margin-bottom: 10px;
+              line-height: 80px;
+
+              @media (max-width: $small-viewport-width) {
+                font-size: 55px;
+                line-height: 55px;
+              }
+            }
+
+            .subtitle {
+              font-family: "Lucida Console", Monaco, monospace;
+              font-size: 24px;
+              font-weight: 700;
+
+              @media (max-width: $small-viewport-width) {
+                font-size: 18px;
+                line-height: 18px;
+              }
+            }
+          }
+        }
+
+        .join-container-outer {
+          padding-top: 50px;
+
+          .server {
+            display: block;
+            padding: 10px;
+            margin: 10px auto;
+            background-color: #FFFFFF11;
+            text-align: center;
+            font-size: 2rem;
+            transition: background-color 0.2s;
+            border-radius: 4px;
+            min-width: 175px;
+            max-width: 300px;
+            user-select: none;
+
+            &:hover {
+              background-color: #FFFFFF33;
+
+              &:active {
+                background-color: #FFFFFF22;
+              }
+            }
+          }
+        }
+
+        .about-container {
+          line-height: 26px;
+          padding: 50px 20px 0 20px;
+          text-align: justify;
+          font-size: 20px;
+          text-justify: inter-word;
+
+          @media (max-width: $small-viewport-width) {
+            font-size: 16px;
+            line-height: 20px;
+            padding: 20px 30px 0 30px;
+          }
+
+          .byond-button {
+            background-color: #F07517;
+            background-image: url("/img/byond_logo.png");
+            width: 150px;
+            background-size: contain;
+            height: 50px;
+            border-radius: 10px;
+            margin: 20px auto 0 auto;
+            display: block;
+            transition: filter 0.2s;
+
+            &:hover {
+              filter: brightness(1.3);
+            }
+
+            &:active {
+              filter: brightness(0.9);
+            }
+          }
+
+          .about-part {
+            padding: 10px 0;
+
+            &.center {
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.stars-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  @-webkit-keyframes STAR-MOVE {
+    from {
+      left: 0;
+      top: 0;
+    }
+    to {
+      left: -6000px;
+      top: -2000px;
+    }
+  }
+
+  .stars-background-image {
+    background-image: url("/img/stars/background.png");
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 100;
+
+    -webkit-animation-name: STAR-MOVE;
+    -webkit-animation-duration: 200s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+
+  .stars-midground-image {
+    background-image: url("/img/stars/midground.png");
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 200;
+
+    -webkit-animation-name: STAR-MOVE;
+    -webkit-animation-duration: 150s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+
+  .stars-foreground-image {
+    background-image: url("/img/stars/foreground.png");
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 300;
+
+    -webkit-animation-name: STAR-MOVE;
+    -webkit-animation-duration: 100s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+}
+

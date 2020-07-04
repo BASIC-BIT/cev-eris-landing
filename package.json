@@ -11,14 +11,17 @@
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
-    "axios": "^0.19.0",
+    "country-flag-icons": "^1.2.1",
+    "i18next": "^19.5.4",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-static": "^7.2.0",
     "react-static-plugin-reach-router": "^7.2.0",
+    "react-static-plugin-sass": "^7.3.0",
     "react-static-plugin-sitemap": "^7.2.0",
     "react-static-plugin-source-filesystem": "^7.2.0",
-    "react-static-plugin-typescript": "^7.2.0"
+    "react-static-plugin-typescript": "^7.2.0",
+    "rxjs": "^6.6.0"
   },
   "devDependencies": {
     "@types/node": "^12.7.2",
@@ -28,7 +31,7 @@
     "@types/react-hot-loader": "^4.1.0",
     "@types/webpack-env": "^1.14.0",
     "react-hot-loader": "^4.12.11",
-    "serve": "^11.1.0",
+    "serve": "^11.3.2",
     "typescript": "^3.5.3"
   }
 }
