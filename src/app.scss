@@ -3,10 +3,12 @@ $text-color: #aebbba;
 $content-background-color: #000000CC;
 $content-background-color-darker: #000000EE;
 $small-viewport-width: 600px;
+$small-viewport-height: 500px;
+$extra-small-viewport-width: 400px;
 
 body {
   font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial,
-    'Lucida Grande', sans-serif;
+  'Lucida Grande', sans-serif;
   font-weight: 300;
   font-size: 16px;
   margin: 0;
@@ -33,19 +35,19 @@ a {
   position: absolute;
   color: $text-color;
   z-index: 1000;
-  min-width: 350px;
+  min-width: 300px;
 
   nav {
     background-color: $content-background-color;
     width: 100%;
     display: flex;
     flex: 1 1 auto;
-    position: relative;
+    position: fixed;
+    top: 0;
     user-select: none;
     z-index: 2000;
 
     @media (max-width: $small-viewport-width) {
-      position: fixed;
       background-color: $content-background-color-darker;
       padding: 5px 0;
 
@@ -181,11 +183,23 @@ a {
         flex: 0 0 auto;
         text-align: center;
         background-color: $content-background-color;
-        padding: 50px 0;
+        padding: 80px 0 10px 0;
         border-radius: 0 0 6px 6px;
 
         @media(max-width: $small-viewport-width) {
-          padding: 100px 0 20px 0;
+          padding: 100px 0 10px 0;
+
+          @media(max-height: $small-viewport-height) {
+            padding: 60px 0 10px 0;
+          }
+        }
+
+        @media(min-width: $small-viewport-width) {
+          padding: 100px 0 10px 0;
+
+          @media(max-height: $small-viewport-height) {
+            padding: 60px 0 10px 0;
+          }
         }
 
         .title-container {
@@ -218,9 +232,13 @@ a {
               margin-bottom: 10px;
               line-height: 80px;
 
-              @media (max-width: $small-viewport-width) {
+              @media (max-width: $small-viewport-width) and (min-width: $extra-small-viewport-width) {
                 font-size: 55px;
                 line-height: 55px;
+              }
+              @media (max-width: $extra-small-viewport-width) {
+                font-size: 40px;
+                line-height: 40px;
               }
             }
 
@@ -229,9 +247,13 @@ a {
               font-size: 24px;
               font-weight: 700;
 
-              @media (max-width: $small-viewport-width) {
+              @media (max-width: $small-viewport-width) and (min-width: $extra-small-viewport-width) {
                 font-size: 18px;
                 line-height: 18px;
+              }
+              @media (max-width: $extra-small-viewport-width) {
+                font-size: 16px;
+                line-height: 16px;
               }
             }
           }
@@ -240,24 +262,35 @@ a {
         .join-container-outer {
           padding-top: 50px;
 
-          .server {
-            display: block;
-            padding: 10px;
-            margin: 10px auto;
-            background-color: #FFFFFF11;
-            text-align: center;
-            font-size: 2rem;
-            transition: background-color 0.2s;
-            border-radius: 4px;
-            min-width: 175px;
-            max-width: 300px;
-            user-select: none;
+          @media(max-height: $small-viewport-height) {
+            padding-top: 20px;
+          }
 
-            &:hover {
-              background-color: #FFFFFF33;
+          .join-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
 
-              &:active {
-                background-color: #FFFFFF22;
+            .server {
+              flex: 0 0 auto;
+              padding: 10px;
+              background-color: #FFFFFF11;
+              text-align: center;
+              font-size: 2rem;
+              transition: background-color 0.2s;
+              border-radius: 4px;
+              min-width: 175px;
+              max-width: 300px;
+              margin: 10px;
+              user-select: none;
+
+              &:hover {
+                background-color: #FFFFFF33;
+
+                &:active {
+                  background-color: #FFFFFF22;
+                }
               }
             }
           }
@@ -330,7 +363,10 @@ a {
   .stars-background-image {
     background-image: url("/img/stars/background.png");
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 100;
 
     -webkit-animation-name: STAR-MOVE;
@@ -342,7 +378,10 @@ a {
   .stars-midground-image {
     background-image: url("/img/stars/midground.png");
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 200;
 
     -webkit-animation-name: STAR-MOVE;
@@ -354,7 +393,10 @@ a {
   .stars-foreground-image {
     background-image: url("/img/stars/foreground.png");
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 300;
 
     -webkit-animation-name: STAR-MOVE;
