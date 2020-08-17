@@ -1,10 +1,9 @@
 import React from 'react'
-import {Router} from "@reach/router";
+import {Route} from "react-router-dom";
 import {TranslationService} from "../services/translations/translation.service";
-import {Routes} from "react-static";
-import Home from "components/pages/Home";
-import About from "components/pages/About";
-import NavBar from "components/NavBar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import NavBar from "./NavBar";
 
 class Page extends React.Component {
     // @ts-ignore
@@ -24,10 +23,8 @@ class Page extends React.Component {
                     <div className="center-container">
                         <div className="center-container-inner">
                             <React.Suspense fallback={() => <div/>}>
-                                <Router component={React.Fragment}>
-                                    <Routes default render={() => <Home/>}/>
-                                    <Routes path="/about" render={() => <About/>}/>
-                                </Router>
+                                <Route exact path="/" component={Home}/>
+                                <Route path="/about" component={About}/>
                             </React.Suspense>
                         </div>
                     </div>

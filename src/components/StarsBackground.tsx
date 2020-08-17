@@ -1,10 +1,6 @@
-import React, {ReactPropTypes} from 'react';
+import React from 'react';
 
 class StarsBackground extends React.Component {
-    constructor(props: ReactPropTypes) {
-        super(props);
-    }
-
     shouldComponentUpdate(): boolean {
         return false;
     }

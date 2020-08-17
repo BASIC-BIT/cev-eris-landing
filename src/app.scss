@@ -15,7 +15,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   overflow-y: hidden;
-  background-color: #000000;
+  background-color: #15293a;
 }
 
 a {
@@ -84,7 +84,7 @@ a {
     .hamburger {
       width: 40px;
       height: 25px;
-      background-image: url("/img/hamburger.png");
+      background-image: url(./img/hamburger.png);
       border-radius: 5px;
       background-size: contain;
       margin: 10px;
@@ -156,7 +156,7 @@ a {
   }
 
   .nav-symbol {
-    background-image: url("/img/symbol-white.png");
+    background-image: url(./img/symbol-white.png);
     background-size: contain;
     width: 50px;
     height: 50px;
@@ -219,13 +219,12 @@ a {
           flex-direction: column;
 
           .eris-title-logo {
-            background-image: url("/img/eris-logo-updated.png");
+            background-image: url(./img/eris-logo-updated.png);
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            flex: 0 0 200px;
-            height: 200px;
-            filter: brightness(0.73);
+            flex: 0 0 220px;
+            height: 220px;
 
             @media (max-width: $small-viewport-width) {
               flex: 0 0 200px;
@@ -338,7 +337,7 @@ a {
 
           .byond-button {
             background-color: #F07517;
-            background-image: url("/img/byond_logo.png");
+            background-image: url(./img/byond_logo.png);
             width: 150px;
             background-size: contain;
             height: 50px;
@@ -370,73 +369,10 @@ a {
 }
 
 .background {
-  background-image: url("/img/noise-background.png");
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+  background-image: url(./img/noise-background.png);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
-//.stars-background {
-//  position: absolute;
-//  left: 0;
-//  right: 0;
-//  top: 0;
-//  bottom: 0;
-//
-//  @-webkit-keyframes STAR-MOVE {
-//    from {
-//      left: 0;
-//      top: 0;
-//    }
-//    to {
-//      left: -6000px;
-//      top: -2000px;
-//    }
-//  }
-//
-//  .stars-background-image {
-//    background-image: url("/img/stars/background.png");
-//    position: fixed;
-//    top: 0;
-//    left: 0;
-//    right: 0;
-//    bottom: 0;
-//    z-index: 100;
-//
-//    -webkit-animation-name: STAR-MOVE;
-//    -webkit-animation-duration: 200s;
-//    -webkit-animation-timing-function: linear;
-//    -webkit-animation-iteration-count: infinite;
-//  }
-//
-//  .stars-midground-image {
-//    background-image: url("/img/stars/midground.png");
-//    position: absolute;
-//    top: 0;
-//    left: 0;
-//    right: 0;
-//    bottom: 0;
-//    z-index: 200;
-//
-//    -webkit-animation-name: STAR-MOVE;
-//    -webkit-animation-duration: 150s;
-//    -webkit-animation-timing-function: linear;
-//    -webkit-animation-iteration-count: infinite;
-//  }
-//
-//  .stars-foreground-image {
-//    background-image: url("/img/stars/foreground.png");
-//    position: absolute;
-//    top: 0;
-//    left: 0;
-//    right: 0;
-//    bottom: 0;
-//    z-index: 300;
-//
-//    -webkit-animation-name: STAR-MOVE;
-//    -webkit-animation-duration: 100s;
-//    -webkit-animation-timing-function: linear;
-//    -webkit-animation-iteration-count: infinite;
-//  }
-//}

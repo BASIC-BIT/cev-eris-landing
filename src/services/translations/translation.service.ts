@@ -35,9 +35,10 @@ const englishTranslations = english() as Translations;
 const russianTranslations = russian() as Translations;
 
 export class TranslationService {
-    private static translationUpdateTopic = new BehaviorSubject(null);
+    private static translationUpdateTopic = new BehaviorSubject<boolean>(false);
     public static translationUpdate$ = TranslationService.translationUpdateTopic.asObservable()
-        .pipe(filter((update) => !!update));
+        .pipe(filter((update) => update));
+
     public static async initTranslations() {
         await i18next.init({
             lng: TranslationService.getDefaultLanguage(),
@@ -56,18 +57,21 @@ export class TranslationService {
     }
 
     private static isSupportedLanguage(language: string) {
-        return language === "us" || language === "ru";
+        return language === "en" || language === "ru";
+    }
+
+    private static getShortLanguageCode(languageString: string): string {
+        return (languageString || "").slice(0, 2);
     }
 
     private static getDefaultLanguage(): string {
+        const languagesList = window.navigator.languages.map(this.getShortLanguageCode);
         // @ts-ignore
-        const browserLanguage = (window.navigator.userLanguage || window.navigator.language || "en").slice(0, 2);
+        const singleLanguage = this.getShortLanguageCode(window.navigator.userLanguage || window.navigator.language);
 
-        if(TranslationService.isSupportedLanguage(browserLanguage)) {
-            return browserLanguage;
-        } else {
-            return "en";
-        }
+        const finalLanguages = (languagesList && languagesList.length) ? languagesList : [singleLanguage];
+
+        return finalLanguages.find(this.isSupportedLanguage) || 'en';
     }
 
     public static get(key: TranslationKey): string {
@@ -78,7 +82,7 @@ export class TranslationService {
         const previousLanguage = i18next.language;
         await i18next.changeLanguage(language);
 
-        if(previousLanguage !== i18next.language) {
+        if (previousLanguage !== i18next.language) {
             TranslationService.translationUpdateTopic.next(true);
         }
     }

@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link} from "@reach/router";
-import LanguageSelector from "components/LanguageSelector";
+import {Link} from "react-router-dom";
+import LanguageSelector from "./LanguageSelector";
 import {TranslationKey, TranslationService} from "../services/translations/translation.service";
 
 interface NavBarState {

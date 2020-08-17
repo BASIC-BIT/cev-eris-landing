@@ -1,26 +1,21 @@
 import React from 'react'
-import {Root} from 'react-static'
 import './app.scss'
-import StarsBackground from "components/StarsBackground";
+import StarsBackground from "./components/StarsBackground";
 import {TranslationService} from "./services/translations/translation.service";
-import Page from "components/Page";
+import Page from "./components/Page";
+import {BrowserRouter} from "react-router-dom";
 
 class App extends React.Component {
-    // @ts-ignore
-    constructor(props) {
-        super(props);
-    }
-
     async componentDidMount() {
         await TranslationService.initTranslations();
     }
 
     render() {
         return (
-            <Root>
+            <BrowserRouter>
                 <StarsBackground/>
                 <Page/>
-            </Root>
+            </BrowserRouter>
         );
     }
 }

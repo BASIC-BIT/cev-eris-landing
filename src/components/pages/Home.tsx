@@ -1,6 +1,6 @@
 import React from 'react'
 import {TranslationKey, TranslationService} from "../../services/translations/translation.service";
-import {Title} from "components/Title";
+import {Title} from "../Title";
 
 class Home extends React.Component {
     render() {
