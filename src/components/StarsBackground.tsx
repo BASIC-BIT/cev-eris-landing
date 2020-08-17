@@ -11,10 +11,10 @@ class StarsBackground extends React.Component {
 
     render() {
         return (
-            <div className="stars-background">
-                <div className="rellax stars-background-image"/>
-                <div className="rellax stars-midground-image"/>
-                <div className="rellax stars-foreground-image"/>
+            <div className="background">
+                {/*<div className="rellax stars-background-image"/>*/}
+                {/*<div className="rellax stars-midground-image"/>*/}
+                {/*<div className="rellax stars-foreground-image"/>*/}
             </div>
         );
     }

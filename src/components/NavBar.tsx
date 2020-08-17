@@ -20,12 +20,12 @@ class NavBar extends React.Component<{}, NavBarState> {
             <nav className={!this.state.toggled ? "hidden" : ""}>
                 <div className="hamburger" onClick={() => this.toggleLinks()} />
                 <Link to="/" className="nav-symbol" />
-                <Link to="/" className="home-link" onClick={() => this.toggleLinks()}>{TranslationService.get(TranslationKey.HOME_LINK)}</Link>
-                <Link to="/about" onClick={() => this.toggleLinks()}>{TranslationService.get(TranslationKey.ABOUT_LINK)}</Link>
-                <a href="https://wiki.cev-eris.com/Main_Page">{TranslationService.get(TranslationKey.WIKI_LINK)}</a>
-                <a href="https://github.com/discordia-space/CEV-Eris">{TranslationService.get(TranslationKey.GITHUB_LINK)}</a>
-                <a href="https://discord.gg/hqjsfF9">{TranslationService.get(TranslationKey.DISCORD_LINK)}</a>
-                <a href="http://wiki.cev-eris.com/index.php/Rules_ErisEn">{TranslationService.get(TranslationKey.RULES_LINK)}</a>
+                <Link to="/" className="nav-link home-link" onClick={() => this.toggleLinks()}>{TranslationService.get(TranslationKey.HOME_LINK)}</Link>
+                <Link className="nav-link" to="/about" onClick={() => this.toggleLinks()}>{TranslationService.get(TranslationKey.ABOUT_LINK)}</Link>
+                <a className="nav-link" href="https://wiki.cev-eris.com/Main_Page">{TranslationService.get(TranslationKey.WIKI_LINK)}</a>
+                <a className="nav-link" href="https://github.com/discordia-space/CEV-Eris">{TranslationService.get(TranslationKey.GITHUB_LINK)}</a>
+                <a className="nav-link" href="https://discord.gg/hqjsfF9">{TranslationService.get(TranslationKey.DISCORD_LINK)}</a>
+                <a className="nav-link" href="http://wiki.cev-eris.com/index.php/Rules_ErisEn">{TranslationService.get(TranslationKey.RULES_LINK)}</a>
                 <LanguageSelector/>
             </nav>
         );

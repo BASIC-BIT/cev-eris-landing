@@ -31,8 +31,10 @@ class LanguageSelector extends React.Component<{}, LanguageSelectorState> {
     render() {
         return (
             <div className="float-right">
-                <Flags.US title={TranslationService.get(TranslationKey.LANGUAGE_SELECT_ENGLISH)} onClick={() => this.onFlagClick(Language.ENGLISH)} className={this.getFlagClasses(Language.ENGLISH)}/>
-                <Flags.RU title={TranslationService.get(TranslationKey.LANGUAGE_SELECT_RUSSIAN)} onClick={() => this.onFlagClick(Language.RUSSIAN)} className={this.getFlagClasses(Language.RUSSIAN)}/>
+                <div className="flag-container">
+                    <Flags.US title={TranslationService.get(TranslationKey.LANGUAGE_SELECT_ENGLISH)} onClick={() => this.onFlagClick(Language.ENGLISH)} className={this.getFlagClasses(Language.ENGLISH)}/>
+                    <Flags.RU title={TranslationService.get(TranslationKey.LANGUAGE_SELECT_RUSSIAN)} onClick={() => this.onFlagClick(Language.RUSSIAN)} className={this.getFlagClasses(Language.RUSSIAN)}/>
+                </div>
             </div>
         );
     }

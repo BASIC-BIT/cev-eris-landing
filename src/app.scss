@@ -1,7 +1,7 @@
 $background-color-normalized: #1d2536;
 $text-color: #aebbba;
-$content-background-color: #000000CC;
-$content-background-color-darker: #000000EE;
+$content-background-color: rgba(94, 94, 94, 0.05);
+$content-background-color-darker: rgba(9, 9, 9, 0.32);
 $small-viewport-width: 600px;
 $small-viewport-height: 500px;
 $extra-small-viewport-width: 400px;
@@ -42,30 +42,36 @@ a {
     width: 100%;
     display: flex;
     flex: 1 1 auto;
-    position: fixed;
-    top: 0;
     user-select: none;
     z-index: 2000;
+    transition: background-color 0.2s;
 
     @media (max-width: $small-viewport-width) {
-      background-color: $content-background-color-darker;
-      padding: 5px 0;
+      position: fixed;
+      top: 0;
+      background-color: transparent;
+
+      padding-bottom: 5px;
 
       flex-direction: column;
 
       &.hidden {
         a {
           display: none;
+          background-color: transparent;
         }
 
         .hamburger {
           filter: alpha(0.5);
         }
       }
+
+      &:not(.hidden) {
+        background-color: $content-background-color-darker;
+      }
     }
 
     @media (min-width: $small-viewport-width) {
-
       .home-link {
         display: none;
       }
@@ -86,47 +92,60 @@ a {
     }
 
     .float-right {
-      position: absolute;
+      position: relative;
       right: 0;
-      top: 10px;
-      height: 100%;
+      top: 0;
       width: 120px;
+      height: 100%;
       display: flex;
-      margin-right: 10px;
-      justify-content: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0 10px 0 auto;
 
-      .flag {
-        flex: 0 0 40px;
-        height: 40px;
-        margin: 0 10px;
-        transition: filter 0.2s;
-        filter: none;
+      @media (max-width: $small-viewport-width) {
+        position: fixed;
+        margin: 10px 0 10px auto;
+        height: auto;
+      }
 
-        &:not(.active) {
-          filter: brightness(1) grayscale(0.8);
-        }
+      .flag-container {
+        display: flex;
+        flex: 0 0 auto;
+        justify-content: flex-start;
 
-        &:hover {
-          filter: brightness(1.4);
+        .flag {
+          flex: 0 0 40px;
+          margin: 0 10px;
+          transition: filter 0.2s;
+          filter: none;
 
-          &:not(.active) {
-            filter: brightness(1.4) grayscale(0.8);
+          &.active {
+            box-shadow: 0 0 10px #9ecaed;
+          }
+
+          &:hover {
+            &:not(.active) {
+              box-shadow: 0 0 10px rgba(158, 202, 237, 0.5);
+            }
           }
         }
       }
     }
 
-    a {
-      filter: brightness(0.6667);
-      color: #EEEEEE;
-      padding: 1.25rem 0.9rem;
+    .nav-link {
+      color: #CCC;
+      padding: 1.25rem 0.7rem;
       display: inline-block;
       height: calc(50px - 2rem);
       flex: 0 0 auto;
       transition: color 0.2s;
 
       &:hover {
-        color: #BBBBBB;
+        color: #F07517;
+      }
+
+      &:active {
+        color: #9c5200;
       }
 
       @media (max-width: $small-viewport-width) {
@@ -141,18 +160,18 @@ a {
     background-size: contain;
     width: 50px;
     height: 50px;
-    margin: 0.25rem;
+    margin: 4px;
     display: inline-block;
     flex: 0 0 auto;
     padding: 0;
-    transition: filter 0.2s;
+    filter: brightness(0.85);
+    transition: width 0.2s, height 0.2s, margin 0.2s;
 
     &:hover {
-      filter: brightness(1.3);
-    }
+      width: 54px;
+      height: 54px;
 
-    &:active {
-      filter: brightness(0.9);
+      margin: 2px;
     }
 
     @media (max-width: $small-viewport-width) {
@@ -166,6 +185,8 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: center;
+
+    overflow-y: auto;
 
     .center-container {
       height: 100%;
@@ -183,23 +204,11 @@ a {
         flex: 0 0 auto;
         text-align: center;
         background-color: $content-background-color;
-        padding: 80px 0 10px 0;
-        border-radius: 0 0 6px 6px;
+        padding: 20px 10px 30px 10px;
+        border-radius: 0 0 5px 5px;
 
-        @media(max-width: $small-viewport-width) {
-          padding: 100px 0 10px 0;
-
-          @media(max-height: $small-viewport-height) {
-            padding: 60px 0 10px 0;
-          }
-        }
-
-        @media(min-width: $small-viewport-width) {
-          padding: 100px 0 10px 0;
-
-          @media(max-height: $small-viewport-height) {
-            padding: 60px 0 10px 0;
-          }
+        @media (max-width: $small-viewport-width) {
+          padding: 60px 10px 30px 10px;
         }
 
         .title-container {
@@ -207,53 +216,61 @@ a {
           display: flex;
           flex: 1 1 auto;
           justify-content: center;
+          flex-direction: column;
 
           .eris-title-logo {
-            background-image: url("/img/symbol-white.png");
+            background-image: url("/img/eris-logo-updated.png");
             background-size: contain;
-            flex: 0 0 120px;
-            height: 120px;
+            background-repeat: no-repeat;
+            background-position: center;
+            flex: 0 0 200px;
+            height: 200px;
             filter: brightness(0.73);
 
             @media (max-width: $small-viewport-width) {
-              flex: 0 0 70px;
-              height: 70px;
+              flex: 0 0 200px;
+              height: 200px;
             }
           }
 
           .title-text-container {
             flex: 0 0 auto;
 
-
             .title {
-              font-family: "Arial Black", Gadget, sans-serif;
+              font-family: Impact, Charcoal, sans-serif;
+              font-weight: 500;
               font-size: 80px;
-              font-weight: 900;
               margin-bottom: 10px;
               line-height: 80px;
+              color: #e88b00;
+              text-shadow: 3px -7px #3c1f00;
+              text-transform: uppercase;
 
               @media (max-width: $small-viewport-width) and (min-width: $extra-small-viewport-width) {
-                font-size: 55px;
-                line-height: 55px;
+                font-size: 70px;
+                line-height: 70px;
               }
               @media (max-width: $extra-small-viewport-width) {
-                font-size: 40px;
-                line-height: 40px;
+                font-size: 60px;
+                line-height: 60px;
               }
             }
 
             .subtitle {
-              font-family: "Lucida Console", Monaco, monospace;
+              font-family: Impact, Charcoal, sans-serif;
+
+              color: #b86e00;
+
               font-size: 24px;
-              font-weight: 700;
+              font-weight: 500;
 
               @media (max-width: $small-viewport-width) and (min-width: $extra-small-viewport-width) {
-                font-size: 18px;
-                line-height: 18px;
+                font-size: 22px;
+                line-height: 22px;
               }
               @media (max-width: $extra-small-viewport-width) {
-                font-size: 16px;
-                line-height: 16px;
+                font-size: 20px;
+                line-height: 20px;
               }
             }
           }
@@ -284,6 +301,16 @@ a {
               max-width: 300px;
               margin: 10px;
               user-select: none;
+
+              color: #cccccc;
+
+              @media(max-width: $small-viewport-width) and (min-width: $extra-small-viewport-width) {
+                font-size: 1.7rem;
+              }
+
+              @media(max-width: $extra-small-viewport-width) {
+                font-size: 1.5rem;
+              }
 
               &:hover {
                 background-color: #FFFFFF33;
@@ -342,67 +369,74 @@ a {
   }
 }
 
-.stars-background {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-
-  @-webkit-keyframes STAR-MOVE {
-    from {
-      left: 0;
-      top: 0;
-    }
-    to {
-      left: -6000px;
-      top: -2000px;
-    }
-  }
-
-  .stars-background-image {
-    background-image: url("/img/stars/background.png");
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 100;
-
-    -webkit-animation-name: STAR-MOVE;
-    -webkit-animation-duration: 200s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-  }
-
-  .stars-midground-image {
-    background-image: url("/img/stars/midground.png");
+.background {
+  background-image: url("/img/noise-background.png");
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    z-index: 200;
-
-    -webkit-animation-name: STAR-MOVE;
-    -webkit-animation-duration: 150s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-  }
-
-  .stars-foreground-image {
-    background-image: url("/img/stars/foreground.png");
-    position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
-    z-index: 300;
-
-    -webkit-animation-name: STAR-MOVE;
-    -webkit-animation-duration: 100s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-  }
 }
-
+//.stars-background {
+//  position: absolute;
+//  left: 0;
+//  right: 0;
+//  top: 0;
+//  bottom: 0;
+//
+//  @-webkit-keyframes STAR-MOVE {
+//    from {
+//      left: 0;
+//      top: 0;
+//    }
+//    to {
+//      left: -6000px;
+//      top: -2000px;
+//    }
+//  }
+//
+//  .stars-background-image {
+//    background-image: url("/img/stars/background.png");
+//    position: fixed;
+//    top: 0;
+//    left: 0;
+//    right: 0;
+//    bottom: 0;
+//    z-index: 100;
+//
+//    -webkit-animation-name: STAR-MOVE;
+//    -webkit-animation-duration: 200s;
+//    -webkit-animation-timing-function: linear;
+//    -webkit-animation-iteration-count: infinite;
+//  }
+//
+//  .stars-midground-image {
+//    background-image: url("/img/stars/midground.png");
+//    position: absolute;
+//    top: 0;
+//    left: 0;
+//    right: 0;
+//    bottom: 0;
+//    z-index: 200;
+//
+//    -webkit-animation-name: STAR-MOVE;
+//    -webkit-animation-duration: 150s;
+//    -webkit-animation-timing-function: linear;
+//    -webkit-animation-iteration-count: infinite;
+//  }
+//
+//  .stars-foreground-image {
+//    background-image: url("/img/stars/foreground.png");
+//    position: absolute;
+//    top: 0;
+//    left: 0;
+//    right: 0;
+//    bottom: 0;
+//    z-index: 300;
+//
+//    -webkit-animation-name: STAR-MOVE;
+//    -webkit-animation-duration: 100s;
+//    -webkit-animation-timing-function: linear;
+//    -webkit-animation-iteration-count: infinite;
+//  }
+//}
